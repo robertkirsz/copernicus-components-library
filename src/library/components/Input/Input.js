@@ -114,10 +114,10 @@ export default class Input extends PureComponent {
     const labelIsActive = Boolean(
       props.value || hasValue || (hasFocus && !props.readOnly) || fixedLabel || props.placeholder
     );
-    const shadowColor = labelIsActive
-      ? blueEndeavour
-      : showValidationMessage
-        ? statusColors[_validationStatus]
+    const shadowColor = showValidationMessage
+      ? statusColors[_validationStatus]
+      : labelIsActive
+        ? blueEndeavour
         : greyMischka;
 
     return (
