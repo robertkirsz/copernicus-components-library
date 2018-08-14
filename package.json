@@ -1,0 +1,58 @@
+{
+  "name": "components-library",
+  "version": "1.0.0",
+  "description": "Reusable Components Library",
+  "main": "./src/index.js",
+  "author": {
+    "name": "Robert Kirsz",
+    "email": "robert.kirsz@gmail.com"
+  },
+  "private": true,
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://robert_kirsz@bitbucket.org/robert_kirsz/components-library.git"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --mode development --hot --port 3333",
+    "build": "webpack --config ./webpack.library.config.js",
+    "build:demo": "webpack --mode production",
+    "lint": "eslint --fix src",
+    "prettier": "prettier './src/{**/*.js, *.js}' --write"
+  },
+  "dependencies": {
+    "lodash.get": "^4.4.2",
+    "polished": "^1.9.3",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "styled-components": "^3.3.3",
+    "styled-kit": "^0.1.7"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-styled-components": "^1.5.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "eslint": "^5.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.14.0",
+    "react-hot-loader": "^4.3.4",
+    "webpack": "^4.16.4",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
