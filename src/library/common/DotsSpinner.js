@@ -29,6 +29,11 @@ export const Wrapper = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${props => props.layer && `
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+  `}
 `;
 
 // prettier-ignore

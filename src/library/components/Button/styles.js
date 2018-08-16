@@ -1,7 +1,11 @@
 import styled, { css } from 'styled-components';
+import _get from 'lodash.get';
 
 import Shadow from 'library/common/Shadow';
-import { getButtonStyles } from 'library/utils';
+
+// Helper function for getting Button props based on its type
+export const getButtonStyles = (path, rootStyles) => props =>
+  _get(rootStyles ? props.theme.Button : props.theme.Button[props.buttonType], path, '');
 
 // prettier-ignore
 export const Content = styled.span`
@@ -11,22 +15,19 @@ export const Content = styled.span`
 
   position: relative;
 
-  background-color: ${getButtonStyles('backgroundColor')};
-  border: 2px solid ${getButtonStyles('borderColor')};
+  background-color: ${props => getButtonStyles(props.disabled ? 'disabled.backgroundColor' : 'backgroundColor')};
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: ${props => getButtonStyles(props.disabled ? 'disabled.borderColor' : 'borderColor')};
   border-radius: inherit;
 
-  color: ${getButtonStyles('color')};
+  color: ${props => getButtonStyles(props.disabled ? 'disabled.color' : 'color')};
   font-family: ${getButtonStyles('fontFamily', true)};
   font-size: ${getButtonStyles('fontSize', true)}px;
   font-weight: ${getButtonStyles('fontWeight', true)};
 
-  transition: background-color 0.3s;
-
-  ${props => props.disabled && css`
-    background: ${getButtonStyles('disabled.backgroundColor')};
-    border-color: transparent;
-    color: ${getButtonStyles('disabled.color')};
-  `}
+  transition: background-color 0.3s, border-color 0.3s;
 `;
 
 // prettier-ignore
@@ -41,6 +42,8 @@ export const Label = styled.span`
   position: relative;
   user-select: none;
   z-index: 1;
+
+  transition: opacity 0.3s;
 
   /* Icon */
   > svg {

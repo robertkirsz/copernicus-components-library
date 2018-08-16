@@ -9,6 +9,8 @@ import DotsSpinner from 'library/common/DotsSpinner';
 
 import { Button as NormalButton, LinkButton, Content, Label } from './styles';
 
+const RippledContent = withRipple(Content, { rippleBoundary: '-2px' });
+
 const propTypes = {
   buttonType: PropTypes.string,
   disabled: PropTypes.bool,
@@ -29,15 +31,16 @@ const Button = ({ children, loading, disabled, icon, buttonType, ...props }) => 
 
   return (
     <Component buttonType={buttonType} disabled={isDisabled} {...props}>
-      <Content buttonType={buttonType} disabled={isDisabled}>
-        <Label>
-          {loading && <DotsSpinner />}
-          {!loading && icon}
-          {!loading && children}
-        </Label>
-      </Content>
+      <RippledContent buttonType={buttonType} disabled={isDisabled}>
+        {loading && <DotsSpinner layer />}
 
-      {showShadow && <Shadow color={blueEndeavour} />}
+        <Label style={{ opacity: loading && 0 }}>
+          {icon}
+          {children}
+        </Label>
+      </RippledContent>
+
+      <Shadow color={blueEndeavour} hidden={!showShadow} />
     </Component>
   );
 };
@@ -45,4 +48,4 @@ const Button = ({ children, loading, disabled, icon, buttonType, ...props }) => 
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
-export default withRipple(Button, { rippleBoundary: '-2px' });
+export default Button;

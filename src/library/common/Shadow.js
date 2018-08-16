@@ -24,6 +24,8 @@ const Shadow = styled.div`
   z-index: -1;
 
   transition: 0.2s;
+
+  ${props => props.hidden && 'opacity: 0;'}
 `;
 
 Shadow.propTypes = propTypes;
