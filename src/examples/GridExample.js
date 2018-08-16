@@ -6,7 +6,7 @@ import Row from 'library/components/Grid/Row';
 import Col from 'library/components/Grid/Col';
 
 const GridExample = props => (
-  <Container style={{ background: 'rgba(200, 0, 0, 0.2)' }}{...props}>
+  <Container style={{ background: 'rgba(200, 0, 0, 0.2)' }} {...props}>
     <Row>
       <Col small={12} medium={4} large={3} extraLarge={3}>
         <Item>Small 12 Medium 4 Large 3</Item>

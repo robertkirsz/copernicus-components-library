@@ -24,7 +24,7 @@ export default {
       borderColor: blueEndeavour,
       hover: {},
       focus: {},
-      disabled: { color: white, background: greyAluminium }
+      disabled: { color: white, backgroundColor: greyAluminium }
     },
     secondary: {
       color: blueEndeavour,
@@ -32,7 +32,7 @@ export default {
       borderColor: blueEndeavour,
       hover: {},
       focus: { backgroundColor: '#F4F6FA' },
-      disabled: { color: greyAluminium, background: white }
+      disabled: { color: greyAluminium, backgroundColor: white }
     },
     tertiary: {
       color: blueEndeavour,
@@ -40,7 +40,7 @@ export default {
       borderColor: 'transparent',
       hover: {},
       focus: { backgroundColor: '#F4F6FA' },
-      disabled: { color: greyAluminium, background: 'transparent' }
+      disabled: { color: greyAluminium, backgroundColor: 'transparent' }
     }
   },
   Checkbox: {

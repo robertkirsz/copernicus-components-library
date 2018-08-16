@@ -23,7 +23,6 @@
 
     /* Possible errors */
 
-    "no-console": "warn",
     "no-empty": "error",
     "no-ex-assign": "warn",
     "no-extra-semi": "off",

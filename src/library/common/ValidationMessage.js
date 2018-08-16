@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
@@ -6,7 +6,7 @@ import { statusColors } from 'library/palette';
 import { statusType } from 'library/types';
 import HeightTransition from 'library/common/HeightTransition';
 
-export default class ValidationMessage extends Component {
+export default class ValidationMessage extends PureComponent {
   static propTypes = {
     show: PropTypes.bool,
     status: statusType,

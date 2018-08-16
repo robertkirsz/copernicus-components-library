@@ -1,8 +1,8 @@
-import React, { Component, createRef } from 'react';
+import React, { PureComponent, createRef } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-export default class HeightTransition extends Component {
+export default class HeightTransition extends PureComponent {
   static propTypes = {
     isActive: PropTypes.bool,
     style: PropTypes.shape({}),

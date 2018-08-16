@@ -23,7 +23,7 @@ export const Content = styled.span`
   transition: background-color 0.3s;
 
   ${props => props.disabled && css`
-    background: ${getButtonStyles('disabled.background')};
+    background: ${getButtonStyles('disabled.backgroundColor')};
     border-color: transparent;
     color: ${getButtonStyles('disabled.color')};
   `}

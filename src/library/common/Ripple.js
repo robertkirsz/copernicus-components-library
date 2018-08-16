@@ -8,7 +8,7 @@
 // const styledDiv = styled.div``
 // const RippledStyledDiv = withRipple(styledDiv)
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css, keyframes } from 'styled-components';
 
@@ -21,7 +21,7 @@ const defaultOptions = {
 const withRipple = (WrappedComponent, customOptions) => {
   const options = { ...defaultOptions, ...customOptions };
 
-  return class WithRipple extends Component {
+  return class WithRipple extends PureComponent {
     static propTypes = {
       disabled: PropTypes.bool,
       color: PropTypes.string,
