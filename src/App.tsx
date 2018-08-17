@@ -1,38 +1,38 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import styled, { injectGlobal, css } from 'styled-components';
 import Div from 'styled-kit/Div';
 import { hot } from 'react-hot-loader';
 
-import ThemeProvider from 'library/components/ThemeProvider';
+import ThemeProvider from './library/components/ThemeProvider';
 
-import ButtonExample from 'examples/ButtonExample';
-import CheckboxExample from 'examples/CheckboxExample';
-import FormExample from 'examples/FormExample';
-import InputExample from 'examples/InputExample';
-import RadioExample from 'examples/RadioExample';
-import TypographyExample from 'examples/TypographyExample';
+// import ButtonExample from 'examples/ButtonExample';
+// import CheckboxExample from 'examples/CheckboxExample';
+// import FormExample from 'examples/FormExample';
+// import InputExample from 'examples/InputExample';
+// import RadioExample from 'examples/RadioExample';
+// import TypographyExample from 'examples/TypographyExample';
 
-import ThemeChanger from './demo-components/ThemeChanger';
+// import ThemeChanger from './demo-components/ThemeChanger';
 
-class App extends Component {
+class App extends React.Component {
   state = {
     password: '',
     loggedIn: Boolean(sessionStorage.getItem('loggedIn')),
     themeName: localStorage.getItem('chosenTheme') || 'defaultLight'
   };
 
-  handleThemeChange = themeName => {
+  handleThemeChange = (themeName: string) => {
     localStorage.setItem('chosenTheme', themeName);
     this.setState({ themeName });
   };
 
-  handlePasswordChange = event => this.setState({ password: event.target.value });
+  handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => this.setState({ password: event.target.value });
 
-  handleLogin = event => {
+  handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (this.state.password === 'kopernik') {
-      sessionStorage.setItem('loggedIn', true);
+      sessionStorage.setItem('loggedIn', 'true');
       this.setState({ loggedIn: true });
     }
   };
@@ -40,7 +40,8 @@ class App extends Component {
   renderComponentExamples = () => (
     <Wrapper justifyCenter>
       <Div flex={1} column maxWidth={960}>
-        <TypographyExample />
+        Hey!
+        {/* <TypographyExample />
 
         <ButtonExample />
 
@@ -54,10 +55,10 @@ class App extends Component {
         <Div wraps>
           <FormExample flex={1} validateOnSubmit />
           <FormExample flex={1} validateOnBlur />
-        </Div>
+        </Div> */}
       </Div>
 
-      <ThemeChanger onChange={this.handleThemeChange} />
+      {/* <ThemeChanger onChange={this.handleThemeChange} /> */}
     </Wrapper>
   );
 
@@ -76,11 +77,15 @@ class App extends Component {
     </Div>
   );
 
-  render = () => (
+  render () {
+    return (
     <ThemeProvider themeName={this.state.themeName}>
+    <div>
       {this.state.loggedIn ? this.renderComponentExamples() : this.renderPasswordScreen()}
+    </div>
     </ThemeProvider>
   );
+}
 }
 
 export default hot(module)(App);

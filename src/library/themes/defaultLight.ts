@@ -1,4 +1,4 @@
-import { white, black, greyAluminium, greyMischka, blueEndeavour } from 'library/palette';
+import { white, black, greyAluminium, greyMischka, blueEndeavour } from '../../library/palette';
 
 export default {
   name: 'defaultLight',

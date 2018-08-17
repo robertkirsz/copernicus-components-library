@@ -3,26 +3,25 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const demo = path.resolve(__dirname, 'demo');
-const library = path.resolve(__dirname, 'src/library');
-const examples = path.resolve(__dirname, 'src/examples');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   output: { path: demo },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      }
+      // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'
+      { test: /\.tsx?$/, exclude: /node_modules/, loader: 'awesome-typescript-loader' },
+      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'
+      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
     ]
+  },
+  // Enable sourcemaps for debugging Webpack's output
+  devtool: 'source-map',
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json']
   },
   plugins: [
     new CleanWebpackPlugin('demo'),
     new HtmlWebPackPlugin({ template: './src/index.html', filename: './index.html' })
-  ],
-  resolve: {
-    alias: { library, examples }
-  }
+  ]
 };
