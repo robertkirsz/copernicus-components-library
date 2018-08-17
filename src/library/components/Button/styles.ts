@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
-import _get from 'lodash.get';
+import { get } from 'lodash';
 
-import Shadow from 'library/common/Shadow';
+import Shadow from '../../common/Shadow';
 
 // Helper function for getting Button props based on its type
-export const getButtonStyles = (path, rootStyles) => props =>
-  _get(rootStyles ? props.theme.Button : props.theme.Button[props.buttonType], path, '');
+export const getButtonStyles = (path: string, rootStyles?: boolean) => props =>
+  get(rootStyles ? props.theme.Button : props.theme.Button[props.buttonType], path, '');
 
 // prettier-ignore
 export const Content = styled.span`

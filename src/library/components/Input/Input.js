@@ -1,13 +1,13 @@
 import React, { PureComponent, createRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { blueEndeavour, greyMischka, statusColors } from 'library/palette';
-import { statusType } from 'library/types';
-import InputWrapper from 'library/common/InputWrapper';
-import ValidationMessage from 'library/common/ValidationMessage';
-import InputIcon from 'library/common/InputIcon';
-import InputLabel from 'library/common/InputLabel';
-import Shadow from 'library/common/Shadow';
+import { blueEndeavour, greyMischka, statusColors } from '../../palette';
+import { statusType } from '../../types';
+import InputWrapper from '../../common/InputWrapper';
+import ValidationMessage from '../../common/ValidationMessage';
+import InputIcon from '../../common/InputIcon';
+import InputLabel from '../../common/InputLabel';
+import Shadow from '../../common/Shadow';
 
 import { Wrapper, StyledTextArea, StyledInput, ChildrenWrapper } from './styles';
 

@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const DotsSpinner = props => (
+const DotsSpinner = (props: any) => (
   <Wrapper {...props}>
     <Dot />
     <Dot />
@@ -25,7 +25,7 @@ const dotAnimation = keyframes`
 `;
 
 // prettier-ignore
-export const Wrapper = styled.span`
+export const Wrapper = styled<{ layer: boolean }, 'span'>('span')`
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,15 +1,15 @@
 import * as React from 'react';
-import styled, { injectGlobal, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import Div from 'styled-kit/Div';
 import { hot } from 'react-hot-loader';
 
 import ThemeProvider from './library/components/ThemeProvider';
 
-// import ButtonExample from 'examples/ButtonExample';
-// import CheckboxExample from 'examples/CheckboxExample';
-// import FormExample from 'examples/FormExample';
-// import InputExample from 'examples/InputExample';
-// import RadioExample from 'examples/RadioExample';
+import ButtonExample from './examples/ButtonExample';
+import CheckboxExample from './examples/CheckboxExample';
+import FormExample from './examples/FormExample';
+import InputExample from './examples/InputExample';
+import RadioExample from './examples/RadioExample';
 import TypographyExample from './examples/TypographyExample';
 
 import ThemeChanger from './demo-components/ThemeChanger';
@@ -39,19 +39,18 @@ class App extends React.Component {
   };
 
   renderComponentExamples = () => (
-    <Wrapper justifyCenter>
-      <Div flex={1} column maxWidth={960}>
-        Hey!
+    <Wrapper justifyCenter={true}>
+      <Div flex={1} column={true} maxWidth={960}>
         <TypographyExample />
-        {/* <ButtonExample /> */}
-        <Div wraps>
-          {/* <CheckboxExample flex={1} /> */}
-          {/* <RadioExample flex={1} /> */}
+        <ButtonExample />
+        <Div wraps={true}>
+          <CheckboxExample flex={1} />
+          <RadioExample flex={1} />
         </Div>
-        {/* <InputExample /> */}
-        <Div wraps>
-          {/* <FormExample flex={1} validateOnSubmit /> */}
-          {/* <FormExample flex={1} validateOnBlur /> */}
+        <InputExample />
+        <Div wraps={true}>
+          <FormExample flex={1} validateOnSubmit />
+          <FormExample flex={1} validateOnBlur />
         </Div>
       </Div>
 
@@ -60,14 +59,14 @@ class App extends React.Component {
   );
 
   renderPasswordScreen = () => (
-    <Div height="100%" justifyCenter itemsCenter>
+    <Div height="100%" justifyCenter={true} itemsCenter={true}>
       <form onSubmit={this.handleLogin}>
         <input
           type="password"
           placeholder="Password"
           value={this.state.password}
           onChange={this.handlePasswordChange}
-          autoFocus
+          autoFocus={true}
         />
         <button style={{ marginLeft: 8 }}>Login</button>
       </form>
@@ -84,26 +83,6 @@ class App extends React.Component {
 }
 
 export default hot(module)(App);
-
-injectGlobal`
-  html, body, #root {
-    height: 100%;
-  }
-
-  body {
-    margin: 0;
-    font: 16px "Open Sans", sans-serif;
-    box-sizing: border-box;
-  }
-
-  * {
-    /* TODO: Probably should apply this explicitly to each component */
-    box-sizing: inherit;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-tap-highlight-color: transparent;
-  }
-`;
 
 // prettier-ignore
 const Wrapper = styled(Div)`

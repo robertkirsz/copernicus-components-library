@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Div from 'styled-kit/Div';
 
-import Input from 'library/components/Input';
-import Checkbox from 'library/components/Checkbox';
-import Button from 'library/components/Button';
+import Input from '../library/components/Input';
+import Checkbox from '../library/components/Checkbox';
+import Button from '../library/components/Button';
 
 import ExampleWrapper from './ExampleWrapper';
 

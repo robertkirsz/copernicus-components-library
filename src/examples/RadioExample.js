@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Radio, { RadioGroup } from 'library/components/Radio';
-import { Paragraph } from 'library/components/Typography';
+import Radio, { RadioGroup } from '../library/components/Radio';
+import { Paragraph } from '../library/components/Typography';
 
 import ExampleWrapper from './ExampleWrapper';
 

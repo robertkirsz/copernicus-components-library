@@ -1,6 +1,6 @@
 import { string, shape, oneOf } from 'prop-types';
 
-import { statusColors } from 'library/palette';
+import { statusColors } from '../palette';
 
 export const statusType = oneOf(Object.keys(statusColors));
 

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { statusColors } from 'library/palette';
+import { statusColors } from '../palette';
 
 // prettier-ignore
 const InputWrapper = styled.div`
