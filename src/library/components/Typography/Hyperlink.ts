@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-import baseStyles from './TypographyBase';
-
 // prettier-ignore
 export const Hyperlink = styled.a`
-  ${baseStyles}
+  margin: 0;
+  padding: 0;
   display: inline-block;
 
   color: ${({ theme }) => theme.Hyperlink.color};

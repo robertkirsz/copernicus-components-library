@@ -1,11 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 import Div from 'styled-kit/Div';
 
-import { ExtraLargeHeader, LargeHeader, SmallHeader, Paragraph, Hyperlink, Small } from 'library/components/Typography';
+import { ExtraLargeHeader, LargeHeader, SmallHeader, Paragraph, Hyperlink, Small } from '../library/components/Typography';
 
 import ExampleWrapper from './ExampleWrapper';
 
-const TypographyExample = props => (
+const TypographyExample: React.SFC = (props: any) => (
   <ExampleWrapper label="Typography" {...props}>
     <Div column listTop={16}>
       <ExtraLargeHeader>Header XL</ExtraLargeHeader>

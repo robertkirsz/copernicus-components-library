@@ -10,9 +10,9 @@ import ThemeProvider from './library/components/ThemeProvider';
 // import FormExample from 'examples/FormExample';
 // import InputExample from 'examples/InputExample';
 // import RadioExample from 'examples/RadioExample';
-// import TypographyExample from 'examples/TypographyExample';
+import TypographyExample from './examples/TypographyExample';
 
-// import ThemeChanger from './demo-components/ThemeChanger';
+import ThemeChanger from './demo-components/ThemeChanger';
 
 class App extends React.Component {
   state = {
@@ -26,7 +26,8 @@ class App extends React.Component {
     this.setState({ themeName });
   };
 
-  handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => this.setState({ password: event.target.value });
+  handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    this.setState({ password: event.target.value });
 
   handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -41,24 +42,20 @@ class App extends React.Component {
     <Wrapper justifyCenter>
       <Div flex={1} column maxWidth={960}>
         Hey!
-        {/* <TypographyExample />
-
-        <ButtonExample />
-
+        <TypographyExample />
+        {/* <ButtonExample /> */}
         <Div wraps>
-          <CheckboxExample flex={1} />
-          <RadioExample flex={1} />
+          {/* <CheckboxExample flex={1} /> */}
+          {/* <RadioExample flex={1} /> */}
         </Div>
-
-        <InputExample />
-
+        {/* <InputExample /> */}
         <Div wraps>
-          <FormExample flex={1} validateOnSubmit />
-          <FormExample flex={1} validateOnBlur />
-        </Div> */}
+          {/* <FormExample flex={1} validateOnSubmit /> */}
+          {/* <FormExample flex={1} validateOnBlur /> */}
+        </Div>
       </Div>
 
-      {/* <ThemeChanger onChange={this.handleThemeChange} /> */}
+      <ThemeChanger onChange={this.handleThemeChange} />
     </Wrapper>
   );
 
@@ -77,15 +74,13 @@ class App extends React.Component {
     </Div>
   );
 
-  render () {
+  render() {
     return (
-    <ThemeProvider themeName={this.state.themeName}>
-    <div>
-      {this.state.loggedIn ? this.renderComponentExamples() : this.renderPasswordScreen()}
-    </div>
-    </ThemeProvider>
-  );
-}
+      <ThemeProvider themeName={this.state.themeName}>
+        <div>{this.state.loggedIn ? this.renderComponentExamples() : this.renderPasswordScreen()}</div>
+      </ThemeProvider>
+    );
+  }
 }
 
 export default hot(module)(App);

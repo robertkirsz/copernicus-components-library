@@ -3,7 +3,7 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 import * as themes from '../../themes';
 
-interface CarouselProps {
+interface ThemeProviderProps {
   themeName?: string;
 }
 
@@ -11,7 +11,7 @@ const defaultProps = {
   themeName: 'defaultLight'
 };
 
-const ThemeProvider: React.SFC<CarouselProps> = props => (
+const ThemeProvider: React.SFC<ThemeProviderProps> = props => (
   <StyledThemeProvider theme={themes[props.themeName]}>{React.Children.only(props.children)}</StyledThemeProvider>
 );
 
