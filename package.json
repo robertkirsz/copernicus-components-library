@@ -15,8 +15,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --mode development --hot --port 3333",
-    "build": "webpack --config ./webpack.library.config.js",
-    "build:demo": "webpack --mode production",
+    "build": "webpack --mode production",
     "lint": "eslint --fix src",
     "prettier": "prettier './src/{**/*.js, *.js}' --write"
   },
@@ -31,11 +30,11 @@
     "styled-kit": "0.1.7"
   },
   "devDependencies": {
-    "@types/lodash.get": "^4.4.4",
+    "@types/lodash.get": "4.4.4",
     "awesome-typescript-loader": "5.2.0",
     "babel-core": "6.26.3",
     "babel-eslint": "8.2.6",
-    "babel-loader": "^7.1.5",
+    "babel-loader": "7.1.5",
     "babel-plugin-styled-components": "1.5.1",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
@@ -44,7 +43,7 @@
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
     "clean-webpack-plugin": "0.1.19",
-    "css-loader": "^1.0.0",
+    "css-loader": "1.0.0",
     "eslint": "5.2.0",
     "eslint-config-standard": "11.0.0",
     "eslint-plugin-import": "2.13.0",
@@ -57,7 +56,7 @@
     "prettier": "1.14.0",
     "react-hot-loader": "4.3.4",
     "source-map-loader": "0.2.4",
-    "style-loader": "^0.22.1",
+    "style-loader": "0.22.1",
     "tslint": "5.11.0",
     "tslint-config-prettier": "1.14.0",
     "tslint-react": "3.6.0",

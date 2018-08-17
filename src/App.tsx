@@ -49,8 +49,8 @@ class App extends React.Component {
         </Div>
         <InputExample />
         <Div wraps={true}>
-          <FormExample flex={1} validateOnSubmit />
-          <FormExample flex={1} validateOnBlur />
+          <FormExample flex={1} validateOnSubmit={true} />
+          <FormExample flex={1} validateOnBlur={true} />
         </Div>
       </Div>
 
@@ -76,7 +76,7 @@ class App extends React.Component {
   render() {
     return (
       <ThemeProvider themeName={this.state.themeName}>
-        <div>{this.state.loggedIn ? this.renderComponentExamples() : this.renderPasswordScreen()}</div>
+        {this.state.loggedIn ? this.renderComponentExamples() : this.renderPasswordScreen()}
       </ThemeProvider>
     );
   }
