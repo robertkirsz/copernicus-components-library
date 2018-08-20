@@ -1,5 +1,5 @@
-import { white, blueEndeavour } from 'library/palette';
-import { defaultLight } from 'library/themes';
+import { white, blueEndeavour } from '../../library/palette';
+import { defaultLight } from '../../library/themes';
 
 export default {
   ...defaultLight,

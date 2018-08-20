@@ -1,4 +1,4 @@
-import { white, black, greyAluminium, greyMischka, blueEndeavour } from 'library/palette';
+import { white, black, greyAluminium, greyMischka, blueEndeavour } from '../../library/palette';
 
 export default {
   name: 'defaultLight',
@@ -10,37 +10,32 @@ export default {
     fontWeight: 300
   },
   Button: {
-    minWidth: 216,
-    height: 52,
-    borderRadius: 100,
-    padding: '13px 20px',
-    fontSize: 18,
-    fontFamily: 'Nunito, sans-serif',
-    lineHeight: 26,
-    fontWeight: 400,
     primary: {
       color: white,
       backgroundColor: blueEndeavour,
       borderColor: blueEndeavour,
-      hover: {},
-      focus: {},
+      boxShadow: '0 2px 4px 0 rgba(32, 28, 23, 0.1), 0 2px 4px 0 rgba(5, 80, 164, 0.2)',
+      hover: { color: white, backgroundColor: blueEndeavour, borderColor: blueEndeavour },
+      focus: { color: white, backgroundColor: '#0664B0', borderColor: '#0664B0' },
       disabled: { color: white, backgroundColor: greyAluminium, borderColor: greyAluminium }
     },
     secondary: {
       color: blueEndeavour,
       backgroundColor: white,
       borderColor: blueEndeavour,
-      hover: {},
-      focus: { backgroundColor: '#F4F6FA' },
-      disabled: { color: greyAluminium, backgroundColor: white, borderColor: white }
+      boxShadow: 'none',
+      hover: { color: white, backgroundColor: blueEndeavour, borderColor: blueEndeavour },
+      focus: { color: white, backgroundColor: '#0664B0', borderColor: '#0664B0' },
+      disabled: { color: greyAluminium, backgroundColor: white, borderColor: greyAluminium }
     },
     tertiary: {
       color: blueEndeavour,
-      backgroundColor: 'transparent',
-      borderColor: 'transparent',
-      hover: {},
-      focus: { backgroundColor: '#F4F6FA' },
-      disabled: { color: greyAluminium, backgroundColor: 'transparent', borderColor: 'transparent' }
+      backgroundColor: white,
+      borderColor: white,
+      boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(5, 80, 164, 0.1)',
+      hover: { color: white, backgroundColor: blueEndeavour, borderColor: blueEndeavour },
+      focus: { color: white, backgroundColor: '#0664B0', borderColor: '#0664B0' },
+      disabled: { color: greyAluminium, backgroundColor: white, borderColor: 'transparent' }
     }
   },
   Checkbox: {

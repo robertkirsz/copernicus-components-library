@@ -2,8 +2,8 @@ import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { statusType } from 'library/types';
-import ValidationMessage from 'library/common/ValidationMessage';
+import { statusType } from '../../types';
+import ValidationMessage from '../../common/ValidationMessage';
 
 const propTypes = {
   name: PropTypes.string,

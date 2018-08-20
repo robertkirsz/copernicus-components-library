@@ -1,22 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import Div from 'styled-kit/Div';
 
-import { SmallHeader } from 'library/components/Typography';
+import { SmallHeader } from '../library/components/Typography';
 
-const propTypes = {
-  label: PropTypes.string,
-  children: PropTypes.node
+interface ExampleWrapperProps {
+  label?: string;
 };
 
-const ExampleWrapper = ({ label, children, ...props }) => (
+const ExampleWrapper: React.SFC<ExampleWrapperProps> = ({ label, children, ...props }) => (
   <Wrapper column {...props}>
     <SmallHeader style={{ marginBottom: 16 }}>{label}</SmallHeader>
     {children}
   </Wrapper>
 );
-
-ExampleWrapper.propTypes = propTypes;
 
 export default ExampleWrapper;
 

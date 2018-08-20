@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./demo/",
+    "sourceMap": true,
+    "noImplicitAny": false, // Make it 'false' for now
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react"
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

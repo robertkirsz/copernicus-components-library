@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { statusType } from 'library/types';
-import withRipple from 'library/common/Ripple';
-import StaticRipple from 'library/common/StaticRipple';
-import ValidationMessage from 'library/common/ValidationMessage';
+import { statusType } from '../../types';
+import withRipple from '../../common/Ripple';
+import StaticRipple from '../../common/StaticRipple';
+import ValidationMessage from '../../common/ValidationMessage';
 import CheckedIcon from './CheckedIcon';
 
 import { Wrapper, InputWrapper, Input, Box, Label } from './styles';

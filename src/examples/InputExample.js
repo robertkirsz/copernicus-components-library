@@ -1,7 +1,7 @@
 import React from 'react';
 import Div from 'styled-kit/Div';
 
-import Input from 'library/components/Input';
+import Input from '../library/components/Input';
 import ExampleWrapper from './ExampleWrapper';
 
 const InputExample = props => (

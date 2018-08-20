@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { white } from 'library/palette';
-import { statusType } from 'library/types';
+import { white } from '../palette';
+import { statusType } from '../types';
 
 const propTypes = {
   theme: PropTypes.shape({}),

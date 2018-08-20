@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 
-import { withValidationStatus } from 'library/utils';
-import StaticRipple from 'library/common/StaticRipple';
+import { withValidationStatus } from '../../utils';
+import StaticRipple from '../../common/StaticRipple';
 
 export const Wrapper = styled.div`
   display: inline-flex;

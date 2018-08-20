@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { statusType } from 'library/types';
-import withRipple from 'library/common/Ripple';
-import StaticRipple from 'library/common/StaticRipple';
+import { statusType } from '../../types';
+import withRipple from '../..//common/Ripple';
+import StaticRipple from '../..//common/StaticRipple';
 
 import { Wrapper, InputWrapper, Input, Label, Icon } from './styles';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Div from 'styled-kit/Div';
 
-import Checkbox from 'library/components/Checkbox';
+import Checkbox from '../library/components/Checkbox';
 
 import ExampleWrapper from './ExampleWrapper';
 

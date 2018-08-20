@@ -1,0 +1,17 @@
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font: 16px "Open Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+* {
+  /* TODO: Probably should apply this explicitly to each component */
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}

@@ -1,12 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import Div from 'styled-kit/Div';
 
-import Button from 'library/components/Button';
-import { Paragraph } from 'library/components/Typography';
+import Button from '../library/components/Button';
+import { Paragraph } from '../library/components/Typography';
 
 import ExampleWrapper from './ExampleWrapper';
 
-const ButtonExample = props => (
+const ButtonExample = (props: any) => (
   <ExampleWrapper label="Button" {...props}>
     <Div listRight={16} wraps>
       <Div column mBottom={16} listBottom={16}>

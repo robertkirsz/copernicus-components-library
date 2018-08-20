@@ -8,28 +8,42 @@
 // const styledDiv = styled.div``
 // const RippledStyledDiv = withRipple(styledDiv)
 
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
-const defaultOptions = {
+interface WithRippleProps {
+  disabled?: boolean;
+  color?: string;
+  style?: React.CSSProperties;
+  onMouseDown?: () => void;
+  // TODO: this is a custom prop not used by Ripple. Without it being specified here, I get error in Button.tsx at about line 32.
+  // Need to figure out how to handle custom props passing in TypeScript. So this is a temporary workaround.
+  buttonType: string;
+}
+
+interface WithRippleState {
+  showRipples: boolean;
+  ripples: object[];
+  style: React.CSSProperties;
+  borderRadius: string;
+}
+
+interface WithRippleOptions {
+  rippleBoundary?: string;
+  duration?: string;
+  scale?: number;
+}
+
+const defaultOptions: WithRippleOptions = {
   rippleBoundary: '0',
   duration: '0.7s',
   scale: 0.7
 };
 
-const withRipple = (WrappedComponent, customOptions) => {
+const withRipple = (Component, customOptions: WithRippleOptions) => {
   const options = { ...defaultOptions, ...customOptions };
 
-  return class WithRipple extends PureComponent {
-    static propTypes = {
-      disabled: PropTypes.bool,
-      color: PropTypes.string,
-      forwardedRef: PropTypes.object,
-      onMouseDown: PropTypes.func,
-      children: PropTypes.node
-    };
-
+  return class WithRipple extends React.PureComponent<WithRippleProps, WithRippleState> {
     static defaultProps = {
       color: 'currentColor',
       onMouseDown: () => {}
@@ -42,12 +56,14 @@ const withRipple = (WrappedComponent, customOptions) => {
       borderRadius: 'inherit'
     };
 
-    wrappedComponentRef = React.createRef();
+    ComponentRef = React.createRef<HTMLElement>();
 
     handleMouseDown = event => {
-      if (this.props.disabled) return;
+      if (this.props.disabled) {
+        return;
+      }
 
-      const node = this.wrappedComponentRef.current;
+      const node = this.ComponentRef.current;
       const { left, top } = node.getBoundingClientRect();
       const x = event.clientX - left;
       const y = event.clientY - top;
@@ -87,9 +103,9 @@ const withRipple = (WrappedComponent, customOptions) => {
       const { showRipples, ripples, borderRadius, style } = this.state;
 
       return (
-        <WrappedComponent
+        <Component
           {...props}
-          innerRef={this.wrappedComponentRef}
+          innerRef={this.ComponentRef}
           style={{ ...props.style, ...style }}
           onMouseDown={this.handleMouseDown}
         >
@@ -107,7 +123,7 @@ const withRipple = (WrappedComponent, customOptions) => {
             </RippleWrapper>
           )}
           {children}
-        </WrappedComponent>
+        </Component>
       );
     }
   };
@@ -123,7 +139,7 @@ const ripple = keyframes`
 `;
 
 // prettier-ignore
-const RippleWrapper = styled.div`
+const RippleWrapper = styled<{ rippleBoundary?: string, borderRadius?: string }, 'div'>('div')`
   position: absolute;
 
   ${({ rippleBoundary }) => css`
@@ -146,7 +162,7 @@ RippleWrapper.defaultProps = {
   borderRadius: 'inherit'
 };
 
-const Ripple = styled.div`
+const Ripple = styled<{ color?: string, duration?: string }, 'div'>('div')`
   position: absolute;
   background: ${props => props.color};
   border-radius: 50%;

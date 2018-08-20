@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { statusColors } from 'library/palette';
-import { statusType } from 'library/types';
-import HeightTransition from 'library/common/HeightTransition';
+import { statusColors } from '../palette';
+import { statusType } from '../types';
+import HeightTransition from '../common/HeightTransition';
 
 export default class ValidationMessage extends PureComponent {
   static propTypes = {
