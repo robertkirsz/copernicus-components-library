@@ -1,33 +1,55 @@
 import styled, { css } from 'styled-components';
-import { get } from 'lodash';
 
-import Shadow from '../../common/Shadow';
-
-// Helper function for getting Button props based on its type
-export const getButtonStyles = (path: string, rootStyles?: boolean) => props =>
-  get(rootStyles ? props.theme.Button : props.theme.Button[props.buttonType], path, '');
+import getButtonStyles from '../../utils/getButtonStyles';
 
 // prettier-ignore
-export const Content = styled.span`
-  display: block;
-  min-width: ${getButtonStyles('minWidth', true)}px;
-  height: ${getButtonStyles('height', true)}px;
+export const Wrapper = styled.button`
+  flex: none;
+  display: inline-block;
 
+  min-width: 216px;
+  height: 48px;
+  padding: 0;
+  
   position: relative;
 
-  background-color: ${props => getButtonStyles(props.disabled ? 'disabled.backgroundColor' : 'backgroundColor')};
+  background-color: ${getButtonStyles('backgroundColor')};
+  border: 2px solid ${getButtonStyles('borderColor')};
+  border-radius: 100px;
+  outline: none;
 
-  border-width: 2px;
-  border-style: solid;
-  border-color: ${props => getButtonStyles(props.disabled ? 'disabled.borderColor' : 'borderColor')};
-  border-radius: inherit;
+  box-shadow: ${getButtonStyles('boxShadow')};
 
-  color: ${props => getButtonStyles(props.disabled ? 'disabled.color' : 'color')};
-  font-family: ${getButtonStyles('fontFamily', true)};
-  font-size: ${getButtonStyles('fontSize', true)}px;
-  font-weight: ${getButtonStyles('fontWeight', true)};
+  color: ${getButtonStyles('color')};
+  font-family: Nunito, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  -webkit-tap-highlight-color: transparent;
 
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s,
+    color 0.3s;
+
+  /* Focus state */
+  ${props => !props.disabled && css`
+    &:hover {
+      background-color: ${getButtonStyles('backgroundColor', 'hover')};
+      border-color: ${getButtonStyles('borderColor', 'hover')};
+      color: ${getButtonStyles('color', 'hover')};
+      box-shadow: none;
+    }
+    
+    &:focus {
+      background-color: ${getButtonStyles('backgroundColor', 'focus')};
+      border-color: ${getButtonStyles('borderColor', 'focus')};
+      color: ${getButtonStyles('color', 'focus')};
+      box-shadow: none;
+    }
+  `}
 `;
 
 // prettier-ignore
@@ -37,70 +59,9 @@ export const Label = styled.span`
   justify-content: center;
 
   height: 100%;
-  padding: ${getButtonStyles('padding', true)};
+  padding: 12px 16px;
 
-  position: relative;
   user-select: none;
-  z-index: 1;
 
   transition: opacity 0.3s;
-
-  /* Icon */
-  > svg {
-    display: inline-block;
-    margin-right: 8px;
-
-    width: 1.3em;
-    height: 1.3em;
-  }
-`;
-
-// prettier-ignore
-export const Button = styled.button`
-  flex: none;
-  display: inline-block;
-
-  padding: 0;
-
-  background: none;
-  border: none;
-  outline: none;
-  border-radius: ${getButtonStyles('borderRadius', true)}px;
-
-  position: relative;
-
-  font-family: inherit;
-  font-size: inherit;
-  text-align: center;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-
-  transition: 0.2s;
-
-  ${props => props.disabled && 'cursor: not-allowed;'}
-
-  /* Focus state */
-  ${props => !props.disabled && css`
-    &:focus {
-      ${Content} {
-        background-color: ${getButtonStyles('focus.backgroundColor')};
-      }
-    }
-  `}
-
-  /* Active state */
-  ${props => !props.disabled && props.buttonType === 'primary' && css`
-    &:active {
-      transform: translateY(2px);
-
-      ${Shadow} {
-        transform: scale(0.9);
-      }
-    }
-  `}
-`;
-
-// prettier-ignore
-export const LinkButton = Button.withComponent('a').extend`
-  text-decoration: none;
 `;

@@ -1,48 +1,37 @@
 import * as React from 'react';
 
-import { blueEndeavour } from '../../palette';
-
 import withRipple from '../../common/Ripple';
-import Shadow from '../../common/Shadow';
 import DotsSpinner from '../../common/DotsSpinner';
 
-import { Button as NormalButton, LinkButton, Content, Label } from './styles';
-
-const RippledContent = withRipple(Content, { rippleBoundary: '-2px' });
+import { Wrapper, Label } from './styles';
 
 interface ButtonProps {
-  buttonType?: string,
-  disabled?: boolean,
-  loading?: boolean,
-  icon?: React.ReactNode,
-  href?: string
-};
+  buttonType?: string;
+  disabled?: boolean;
+  loading?: boolean;
+  icon?: React.ReactNode;
+}
 
-const defaultProps = {
+const defaultProps: Partial<ButtonProps> = {
   buttonType: 'primary'
 };
 
-const Button: React.SFC<ButtonProps> = ({ children, loading, disabled, icon, buttonType, ...props }) => {
+const Button: React.SFC<ButtonProps> = props => {
+  const { children, loading, disabled, icon, buttonType, ...rest } = props;
   const isDisabled = disabled || loading;
-  const Component = props.href ? LinkButton : NormalButton;
-  const showShadow = buttonType === 'primary' && !disabled && !loading;
 
   return (
-    <Component buttonType={buttonType} disabled={isDisabled} {...props}>
-      <RippledContent buttonType={buttonType} disabled={isDisabled}>
-        {loading && <DotsSpinner layer={true} />}
+    <Wrapper buttonType={buttonType} disabled={isDisabled} {...rest}>
+      {loading && <DotsSpinner layer={true} />}
 
-        <Label style={{ opacity: loading && 0 }}>
-          {icon}
-          {children}
-        </Label>
-      </RippledContent>
-
-      <Shadow color={blueEndeavour} hidden={!showShadow} />
-    </Component>
+      <Label style={{ opacity: loading && 0 }}>
+        {icon}
+        {children}
+      </Label>
+    </Wrapper>
   );
 };
 
 Button.defaultProps = defaultProps;
 
-export default Button;
+export default withRipple(Button, { rippleBoundary: '-2px' });

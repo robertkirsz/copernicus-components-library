@@ -28,13 +28,19 @@ interface WithRippleState {
   borderRadius: string;
 }
 
-const defaultOptions = {
+interface WithRippleOptions {
+  rippleBoundary?: string;
+  duration?: string;
+  scale?: number;
+}
+
+const defaultOptions: WithRippleOptions = {
   rippleBoundary: '0',
   duration: '0.7s',
   scale: 0.7
 };
 
-const withRipple = (WrappedComponent, customOptions) => {
+const withRipple = (Component, customOptions: WithRippleOptions) => {
   const options = { ...defaultOptions, ...customOptions };
 
   return class WithRipple extends React.PureComponent<WithRippleProps, WithRippleState> {
@@ -50,12 +56,14 @@ const withRipple = (WrappedComponent, customOptions) => {
       borderRadius: 'inherit'
     };
 
-    wrappedComponentRef = React.createRef<HTMLElement>();
+    ComponentRef = React.createRef<HTMLElement>();
 
     handleMouseDown = event => {
-      if (this.props.disabled) return;
+      if (this.props.disabled) {
+        return;
+      }
 
-      const node = this.wrappedComponentRef.current;
+      const node = this.ComponentRef.current;
       const { left, top } = node.getBoundingClientRect();
       const x = event.clientX - left;
       const y = event.clientY - top;
@@ -95,9 +103,9 @@ const withRipple = (WrappedComponent, customOptions) => {
       const { showRipples, ripples, borderRadius, style } = this.state;
 
       return (
-        <WrappedComponent
+        <Component
           {...props}
-          innerRef={this.wrappedComponentRef}
+          innerRef={this.ComponentRef}
           style={{ ...props.style, ...style }}
           onMouseDown={this.handleMouseDown}
         >
@@ -115,7 +123,7 @@ const withRipple = (WrappedComponent, customOptions) => {
             </RippleWrapper>
           )}
           {children}
-        </WrappedComponent>
+        </Component>
       );
     }
   };
