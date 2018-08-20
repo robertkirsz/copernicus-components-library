@@ -1,17 +1,36 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const DotsSpinner = (props: any) => (
-  <Wrapper {...props}>
+interface DotsSpinnerProps {
+  layer?: boolean;
+  className?: string;
+}
+
+const DotsSpinner: React.SFC<DotsSpinnerProps> = props => (
+  <span {...props}>
     <Dot />
     <Dot />
     <Dot />
-  </Wrapper>
+  </span>
 );
 
-export default DotsSpinner;
-
 // prettier-ignore
+const StyledDotsSipnner = styled<{ layer: boolean }>(({ layer, ...rest}) => <DotsSpinner {...rest} />)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ${props => props.layer && `
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  `}
+`;
+
+export default StyledDotsSipnner;
+
 const dotAnimation = keyframes`
   0%, 80%, 100% {
     opacity: 0;
@@ -24,23 +43,10 @@ const dotAnimation = keyframes`
   }
 `;
 
-// prettier-ignore
-export const Wrapper = styled<{ layer: boolean }, 'span'>('span')`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  ${props => props.layer && `
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-  `}
-`;
-
-// prettier-ignore
-export const Dot = styled.span`
+const Dot = styled.span`
   display: block;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 
   background: currentColor;
   border-radius: 50%;
@@ -56,6 +62,6 @@ export const Dot = styled.span`
   }
 
   &:not(:first-child) {
-    margin-left: 7px;
+    margin-left: 8px;
   }
 `;
