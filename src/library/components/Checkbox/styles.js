@@ -20,7 +20,7 @@ export const InputWrapper = styled.div`
   /* Hover state */
   &:hover {
     ${StaticRipple} {
-      background: ${props => rgba(withValidationStatus('Checkbox.borderColor')(props), 0.2)};
+      background: ${props => rgba(withValidationStatus('Checkbox', 'borderColor')(props), 0.2)};
       opacity: 1;
     }
   }
@@ -38,7 +38,7 @@ export const Box = styled.div`
 
   position: relative;
 
-  border: 2px solid ${withValidationStatus('Checkbox.borderColor')};
+  border: 2px solid ${withValidationStatus('Checkbox', 'borderColor')};
   border-radius: 2px;
   pointer-events: none;
 

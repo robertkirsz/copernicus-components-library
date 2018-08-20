@@ -2,9 +2,13 @@ html, body, #root {
   height: 100%;
 }
 
+html {
+  font-size: 8px;
+}
+
 body {
   margin: 0;
-  font: 16px "Open Sans", sans-serif;
+  font: 400 2rem "Open Sans", sans-serif;
   box-sizing: border-box;
 }
 

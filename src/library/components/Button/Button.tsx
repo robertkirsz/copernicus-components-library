@@ -24,7 +24,7 @@ const Button: React.SFC<ButtonProps> = props => {
     <Wrapper buttonType={buttonType} disabled={isDisabled} {...rest}>
       {loading && <DotsSpinner layer={true} />}
 
-      <Label style={{ opacity: loading && 0 }}>
+      <Label hidden={loading}>
         {icon}
         {children}
       </Label>

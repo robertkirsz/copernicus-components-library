@@ -7,7 +7,6 @@ import InputWrapper from '../../common/InputWrapper';
 import ValidationMessage from '../../common/ValidationMessage';
 import InputIcon from '../../common/InputIcon';
 import InputLabel from '../../common/InputLabel';
-import Shadow from '../../common/Shadow';
 
 import { Wrapper, StyledTextArea, StyledInput, ChildrenWrapper } from './styles';
 
@@ -110,16 +109,10 @@ export default class Input extends PureComponent {
     const iconIsVisible = Boolean(validationStatus);
     const InputComponent = multiLine ? StyledTextArea : StyledInput;
     const hasCustomInput = Boolean(inputElement);
-    const showShadow = !props.disabled;
     const labelIsActive = Boolean(
       props.value || hasValue || (hasFocus && !props.readOnly) || fixedLabel || props.placeholder
     );
-    const shadowColor = showValidationMessage
-      ? statusColors[_validationStatus]
-      : labelIsActive
-        ? blueEndeavour
-        : greyMischka;
-
+    
     return (
       <Wrapper
         isDisabled={props.disabled}
@@ -167,8 +160,6 @@ export default class Input extends PureComponent {
             })}
 
           <InputIcon status={_validationStatus} isDisabled={props.disabled} />
-
-          {showShadow && <Shadow color={shadowColor} />}
         </InputWrapper>
 
         <ValidationMessage show={showHintMessage || showValidationMessage} status={_validationStatus}>

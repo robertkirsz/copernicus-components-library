@@ -18,12 +18,24 @@ interface WithRippleProps {
   onMouseDown?: () => void;
   // TODO: this is a custom prop not used by Ripple. Without it being specified here, I get error in Button.tsx at about line 32.
   // Need to figure out how to handle custom props passing in TypeScript. So this is a temporary workaround.
-  buttonType: string;
+  buttonType?: string;
+  loading?: boolean;
+  circular?: boolean;
+}
+
+interface Ripple {
+  id: number;
+  style: {
+    width: number;
+    height: number;
+    left: number;
+    top: number;
+  };
 }
 
 interface WithRippleState {
   showRipples: boolean;
-  ripples: object[];
+  ripples: Ripple[];
   style: React.CSSProperties;
   borderRadius: string;
 }
@@ -44,10 +56,12 @@ const withRipple = (Component, customOptions: WithRippleOptions) => {
   const options = { ...defaultOptions, ...customOptions };
 
   return class WithRipple extends React.PureComponent<WithRippleProps, WithRippleState> {
-    static defaultProps = {
+    static defaultProps: Partial<WithRippleProps> = {
       color: 'currentColor',
       onMouseDown: () => {}
     };
+
+    private ComponentRef: React.RefObject<HTMLInputElement> = React.createRef();
 
     state = {
       showRipples: false,
@@ -56,18 +70,16 @@ const withRipple = (Component, customOptions: WithRippleOptions) => {
       borderRadius: 'inherit'
     };
 
-    ComponentRef = React.createRef<HTMLElement>();
-
     handleMouseDown = event => {
       if (this.props.disabled) {
         return;
       }
 
-      const node = this.ComponentRef.current;
+      const node = this.ComponentRef.current!;
       const { left, top } = node.getBoundingClientRect();
       const x = event.clientX - left;
       const y = event.clientY - top;
-      const rippleSize = Math.min(node.offsetHeight, node.offsetWidth, 100) * options.scale;
+      const rippleSize = Math.min(node.offsetHeight, node.offsetWidth, 100) * (options.scale || 0.7); // TODO: '|| 0.7' shouldn't be needed here, fix that
 
       const newRipple = {
         id: Date.now(),
@@ -91,8 +103,8 @@ const withRipple = (Component, customOptions: WithRippleOptions) => {
       });
     };
 
-    handleRippleAnimationEnd = id => event => {
-      const ripples = this.state.ripples.filter(ripple => ripple.id !== id);
+    handleRippleAnimationEnd = id => () => {
+      const ripples = this.state.ripples.filter((ripple: Ripple) => ripple.id !== id);
       const showRipples = ripples.length > 0;
 
       this.setState({ ripples, showRipples, style: showRipples ? this.state.style : {} });
@@ -111,7 +123,7 @@ const withRipple = (Component, customOptions: WithRippleOptions) => {
         >
           {showRipples && (
             <RippleWrapper borderRadius={borderRadius} rippleBoundary={options.rippleBoundary}>
-              {ripples.map(ripple => (
+              {ripples.map((ripple: Ripple) => (
                 <Ripple
                   key={ripple.id}
                   style={ripple.style}
@@ -157,11 +169,6 @@ const RippleWrapper = styled<{ rippleBoundary?: string, borderRadius?: string },
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 `;
 
-RippleWrapper.defaultProps = {
-  rippleBoundary: defaultOptions.rippleBoundary,
-  borderRadius: 'inherit'
-};
-
 const Ripple = styled<{ color?: string, duration?: string }, 'div'>('div')`
   position: absolute;
   background: ${props => props.color};
@@ -171,8 +178,3 @@ const Ripple = styled<{ color?: string, duration?: string }, 'div'>('div')`
   animation-name: ${ripple};
   animation-duration: ${props => props.duration};
 `;
-
-Ripple.defaultProps = {
-  color: 'currentColor',
-  duration: defaultOptions.duration
-};

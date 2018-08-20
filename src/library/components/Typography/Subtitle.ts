@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 // prettier-ignore
-export const Paragraph = styled<{ center?: boolean }, 'p'>('p')`
+export const Subtitle = styled<{ center?: boolean }, 'h5'>('h5')`
   margin: 0;
   
-  font: 400 2rem/3rem 'Open Sans', sans-serif;
+  font: 600 2rem/3rem 'Open Sans', sans-serif;
   
   ${props => props.center && 'text-align: center;'}
 `;

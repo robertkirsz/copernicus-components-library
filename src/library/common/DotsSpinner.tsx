@@ -15,7 +15,7 @@ const DotsSpinner: React.SFC<DotsSpinnerProps> = props => (
 );
 
 // prettier-ignore
-const StyledDotsSipnner = styled<{ layer: boolean }>(({ layer, ...rest}) => <DotsSpinner {...rest} />)`
+const StyledDotsSpinner = styled<{ layer: boolean }>(({ layer, ...rest}) => <DotsSpinner {...rest} />)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +29,7 @@ const StyledDotsSipnner = styled<{ layer: boolean }>(({ layer, ...rest}) => <Dot
   `}
 `;
 
-export default StyledDotsSipnner;
+export default StyledDotsSpinner;
 
 const dotAnimation = keyframes`
   0%, 80%, 100% {

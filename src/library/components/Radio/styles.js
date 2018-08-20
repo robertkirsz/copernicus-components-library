@@ -19,7 +19,7 @@ export const InputWrapper = styled.div`
   /* Hover state */
   &:hover {
     ${StaticRipple} {
-      background: ${props => rgba(withValidationStatus('Radio.borderColor')(props), 0.2)};
+      background: ${props => rgba(withValidationStatus('Radio', 'borderColor')(props), 0.2)};
       opacity: 1;
     }
   }
@@ -36,7 +36,7 @@ export const Icon = styled.div`
 
   position: relative;
 
-  border: 2px solid ${withValidationStatus('Radio.borderColor')};
+  border: 2px solid ${withValidationStatus('Radio', 'borderColor')};
   border-radius: 50%;
 
   transition: background-color 0.3s, border-color 0.3s;

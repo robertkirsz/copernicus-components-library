@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 import Div from 'styled-kit/Div';
-import { hot } from 'react-hot-loader';
+// import { hot } from 'react-hot-loader';
 
 import ThemeProvider from './library/components/ThemeProvider';
 
@@ -14,14 +14,20 @@ import TypographyExample from './examples/TypographyExample';
 
 import ThemeChanger from './demo-components/ThemeChanger';
 
-class App extends React.Component {
+interface AppState {
+  password: string;
+  loggedIn: boolean;
+  themeName: string;
+}
+
+class App extends React.Component<{}, AppState> {
   state = {
     password: '',
     loggedIn: Boolean(sessionStorage.getItem('loggedIn')),
     themeName: localStorage.getItem('chosenTheme') || 'defaultLight'
   };
 
-  handleThemeChange = (themeName: string) => {
+  handleThemeChange = (themeName: AppState['themeName']) => {
     localStorage.setItem('chosenTheme', themeName);
     this.setState({ themeName });
   };
@@ -42,14 +48,20 @@ class App extends React.Component {
     <Wrapper justifyCenter={true}>
       <Div flex={1} column={true} maxWidth={960}>
         <TypographyExample />
+        
         <ButtonExample />
+        
         <Div wraps={true}>
           <CheckboxExample flex={1} />
+          
           <RadioExample flex={1} />
         </Div>
+        
         <InputExample />
+        
         <Div wraps={true}>
           <FormExample flex={1} validateOnSubmit={true} />
+          
           <FormExample flex={1} validateOnBlur={true} />
         </Div>
       </Div>
@@ -82,7 +94,8 @@ class App extends React.Component {
   }
 }
 
-export default hot(module)(App);
+// export default hot(module)(App);
+export default App;
 
 // prettier-ignore
 const Wrapper = styled(Div)`

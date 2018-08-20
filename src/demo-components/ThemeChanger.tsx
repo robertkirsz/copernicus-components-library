@@ -11,7 +11,7 @@ interface ThemeChangerProps {
 
 const ThemeChanger: React.SFC<ThemeChangerProps> = ({ theme, onChange, ...props }) => (
   <div {...props}>
-    {Object.keys(themes).map(themeName => (
+    {Object.keys(themes).map((themeName: string) => (
       <Button key={themeName} isActive={theme.name === themeName} onClick={() => onChange(themeName)}>
         {themeName}
       </Button>

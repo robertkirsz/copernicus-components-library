@@ -3,27 +3,33 @@ import styled, { css } from 'styled-components';
 import getButtonStyles from '../../utils/getButtonStyles';
 
 // prettier-ignore
-export const Wrapper = styled.button`
+export const Wrapper = styled<{ circular?: boolean, disabled?: boolean, buttonType?: string }, 'button'>('button')`
   flex: none;
   display: inline-block;
 
   min-width: 216px;
-  height: 48px;
+  height: 6rem;
+  border-radius: 100px;
+
+  ${props => props.circular && `
+    min-width: 0;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+  `}
+  
   padding: 0;
   
   position: relative;
 
   background-color: ${getButtonStyles('backgroundColor')};
   border: 2px solid ${getButtonStyles('borderColor')};
-  border-radius: 100px;
   outline: none;
 
   box-shadow: ${getButtonStyles('boxShadow')};
 
   color: ${getButtonStyles('color')};
-  font-family: Nunito, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+  font: 700 2rem/3rem Nunito, sans-serif;
   text-align: center;
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   -webkit-tap-highlight-color: transparent;
@@ -64,4 +70,6 @@ export const Label = styled.span`
   user-select: none;
 
   transition: opacity 0.3s;
+
+  ${props => props.hidden && `opacity: 0;`}
 `;

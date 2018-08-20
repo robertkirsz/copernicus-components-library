@@ -4,10 +4,10 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import * as themes from '../../themes';
 
 interface ThemeProviderProps {
-  themeName?: string;
+  themeName: string;
 }
 
-const defaultProps = {
+const defaultProps: ThemeProviderProps = {
   themeName: 'defaultLight'
 };
 
