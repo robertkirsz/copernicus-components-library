@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Div from 'styled-kit/Div';
+
+import Div from '../demo-components/Div';
 
 import Input from '../library/components/Input';
 import Checkbox from '../library/components/Checkbox';

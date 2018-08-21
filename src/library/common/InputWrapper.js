@@ -13,7 +13,8 @@ const InputWrapper = styled.div`
   position: relative;
 
   border: 1px solid;
-  border-radius: 2px;
+  border-bottom: 2px solid;
+  border-radius: 2px 2px 0 0;
 
   font-size: 16px;
   font-weight: 600;
@@ -36,16 +37,13 @@ const InputWrapper = styled.div`
       }
     `}
 
-    /* Active state */
     ${isActive && css`
-      background-color: ${theme.Input.focus.backgroundColor};
-      border-color: ${theme.Input.focus.borderColor};
+      border-bottom-color: ${theme.Input.focus.borderBottomColor};
     `}
 
     /* Validation status colors */
     ${validationStatus && css`
-      background-color: ${statusColors[validationStatus]};
-      border-color: ${statusColors[validationStatus]};
+      border-bottom-color: ${statusColors[validationStatus]};
     `}
 
     /* Disabled state */

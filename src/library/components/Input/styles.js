@@ -9,12 +9,12 @@ const getInputStyles = props => css`
   background: none;
   outline: none;
   border: none;
-  border-radius: 2px;
+  border-radius: inherit;
 
   color: ${props.isDisabled ? props.theme.Input.disabled.color : props.isActive ? props.theme.Input.focus.color : props.theme.Input.color};
   font-size: ${props.theme.Input.fontSize}px;
   font-weight: ${props.theme.Input.fontWeight};
-  font-family: ${props.theme.Main.fontFamily};
+  font-family: 'Open Sans', sans-serif;
 
   transition: color 0.3s;
   -webkit-appearance: none;

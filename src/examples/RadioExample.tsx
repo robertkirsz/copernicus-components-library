@@ -1,11 +1,16 @@
-import React from 'react';
+import * as React from 'react';
 
 import Radio, { RadioGroup } from '../library/components/Radio';
 import { Paragraph } from '../library/components/Typography';
 
 import ExampleWrapper from './ExampleWrapper';
 
-const RadioExample = props => (
+// TODO: this shouldn't be needed, this component only passes the props further down. Need to see how to handle that.
+interface Props {
+  flex?: any;
+}
+
+const RadioExample: React.SFC<Props> = props => (
   <ExampleWrapper label="Radio" {...props}>
     <Paragraph>Generic radio group</Paragraph>
 

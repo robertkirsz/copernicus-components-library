@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { white } from '../palette';
+import { white, statusColors } from '../palette';
 import { statusType } from '../types';
 
 // prettier-ignore
 const InputLabel = styled.label`
-  ${({ theme, status, isDisabled, iconIsVisible, isActive, isStatic, offsetLeft }) => css`
+  ${({ theme, status, isDisabled, iconIsVisible, isActive, isStatic, offsetLeft, validationStatus }) => css`
     display: inline-flex;
     width: ${iconIsVisible && !isActive ? 'calc(100% - 36px)' : '100%'};
     padding: ${offsetLeft ? `0 16px 0 ${offsetLeft + 16}px` : '0 16px'};
@@ -29,11 +29,10 @@ const InputLabel = styled.label`
     ${isActive && css`
       top: ${theme.InputLabel.active.top}px;
 
-      color: ${theme.InputLabel.active.color};
+      color: ${props => props.validationStatus ? statusColors[validationStatus] : theme.InputLabel.active.color};
       font-size: ${theme.InputLabel.active.fontSize}px;
       line-height: ${theme.InputLabel.active.lineHeight}px;
 
-      opacity: ${theme.InputLabel.active.opacity};
       transition: all 0.2s ease, top 0.2s ease-in, padding 0.2s ease-out;
     `}
 
@@ -41,11 +40,9 @@ const InputLabel = styled.label`
       position: relative;
       top: 0;
 
-      color: ${theme.InputLabel.active.color};
+      color: ${props => props.validationStatus ? statusColors[validationStatus] : theme.InputLabel.active.color};
       font-size: ${theme.InputLabel.active.fontSize}px;
       line-height: ${theme.InputLabel.active.lineHeight}px;
-
-      opacity: ${theme.InputLabel.active.opacity};
     `}
   `}
 `;

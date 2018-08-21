@@ -1,5 +1,7 @@
 import * as React from 'react';
-import Div from 'styled-kit/Div';
+import styled from 'styled-components';
+
+import Div from '../demo-components/Div';
 
 import { SmallHeader } from '../library/components/Typography';
 
@@ -8,17 +10,17 @@ interface ExampleWrapperProps {
 };
 
 const ExampleWrapper: React.SFC<ExampleWrapperProps> = ({ label, children, ...props }) => (
-  <Wrapper column {...props}>
+  <Div column {...props}>
     <SmallHeader style={{ marginBottom: 16 }}>{label}</SmallHeader>
     {children}
-  </Wrapper>
+  </Div>
 );
 
-export default ExampleWrapper;
-
-const Wrapper = Div.extend`
+const StyledExampleWrapper = styled(ExampleWrapper)`
   margin: 8px;
   padding: 8px;
   border: 1px solid #999;
   border-radius: 4px;
 `;
+
+export default StyledExampleWrapper;

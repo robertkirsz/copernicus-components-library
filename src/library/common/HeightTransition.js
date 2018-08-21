@@ -67,7 +67,7 @@ const Wrapper = styled.div`
 
   ${props => css`
     opacity: ${props.isActive ? 1 : 0};
-    transition: all ${props.timeout}ms;
+    transition: height ${props.timeout}ms, opacity ${props.timeout}ms ${props.isActive ? props.timeout * 0.5 : 0}ms;
     ${(!props.isActive || props.isAnimating) && 'overflow: hidden;'}
 
     > * {

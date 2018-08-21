@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import Div from 'styled-kit/Div';
 // import { hot } from 'react-hot-loader';
 
 import ThemeProvider from './library/components/ThemeProvider';
@@ -13,6 +12,7 @@ import RadioExample from './examples/RadioExample';
 import TypographyExample from './examples/TypographyExample';
 
 import ThemeChanger from './demo-components/ThemeChanger';
+import Div from './demo-components/Div';
 
 interface AppState {
   password: string;

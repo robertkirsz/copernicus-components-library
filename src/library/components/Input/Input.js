@@ -1,7 +1,6 @@
 import React, { PureComponent, createRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { blueEndeavour, greyMischka, statusColors } from '../../palette';
 import { statusType } from '../../types';
 import InputWrapper from '../../common/InputWrapper';
 import ValidationMessage from '../../common/ValidationMessage';
@@ -23,7 +22,6 @@ export default class Input extends PureComponent {
     readOnly: PropTypes.bool,
     fixedLabel: PropTypes.bool,
     label: PropTypes.node,
-    inputElement: PropTypes.node,
     hintMessage: PropTypes.node,
     // Validation
     validationStatus: statusType,
@@ -87,7 +85,6 @@ export default class Input extends PureComponent {
       multiLine,
       label,
       fixedLabel,
-      inputElement,
       hintMessage,
       validationStatus,
       validationMessage,
@@ -108,7 +105,6 @@ export default class Input extends PureComponent {
     const _validationStatus = (!hasFocus && !showHintMessage && validationStatus) || null;
     const iconIsVisible = Boolean(validationStatus);
     const InputComponent = multiLine ? StyledTextArea : StyledInput;
-    const hasCustomInput = Boolean(inputElement);
     const labelIsActive = Boolean(
       props.value || hasValue || (hasFocus && !props.readOnly) || fixedLabel || props.placeholder
     );
@@ -133,36 +129,26 @@ export default class Input extends PureComponent {
             style={labelStyle}
             iconIsVisible={iconIsVisible}
             offsetLeft={childrenWrapperWidth}
+            validationStatus={_validationStatus}
             {...labelProps}
           >
             {label}
           </InputLabel>
 
-          {!hasCustomInput && (
-            <InputComponent
-              {...props}
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
-              onFocus={this.handleFocus}
-              style={inputStyle}
-              iconIsVisible={iconIsVisible}
-              type={type}
-            />
-          )}
-
-          {hasCustomInput &&
-            React.cloneElement(inputElement, {
-              ...props,
-              onChange: this.handleChange,
-              onFocus: this.handleFocus,
-              onBlur: this.handleBlur,
-              style: inputStyle
-            })}
+          <InputComponent
+            {...props}
+            onChange={this.handleChange}
+            onBlur={this.handleBlur}
+            onFocus={this.handleFocus}
+            style={inputStyle}
+            iconIsVisible={iconIsVisible}
+            type={type}
+          />
 
           <InputIcon status={_validationStatus} isDisabled={props.disabled} />
         </InputWrapper>
 
-        <ValidationMessage show={showHintMessage || showValidationMessage} status={_validationStatus}>
+        <ValidationMessage show={showHintMessage || showValidationMessage} status={_validationStatus} style={{ marginLeft: 16 }}>
           {showHintMessage ? hintMessage : showValidationMessage ? validationMessage : ''}
         </ValidationMessage>
       </Wrapper>

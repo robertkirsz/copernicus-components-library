@@ -57,7 +57,7 @@ export default {
     fontSize: 16,
     fontWeight: 400,
     hover: {},
-    focus: { backgroundColor: blueEndeavour, borderColor: blueEndeavour, color: white },
+    focus: { borderBottomColor: blueEndeavour },
     disabled: { backgroundColor: greyMischka, borderColor: greyMischka, color: '#80838B' },
     placeholder: { color: white, opacity: 0.7 }
   },
@@ -68,11 +68,10 @@ export default {
     lineHeight: 26,
     top: 20,
     active: {
-      color: white,
+      color: blueEndeavour,
       fontSize: 12,
       lineHeight: 26,
-      top: 8,
-      opacity: 0.7
+      top: 8
     }
   },
   Hyperlink: {

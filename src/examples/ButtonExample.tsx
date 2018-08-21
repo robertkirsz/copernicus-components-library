@@ -1,6 +1,7 @@
 import * as React from 'react';
-import Div from 'styled-kit/Div';
 import styled from 'styled-components';
+
+import Div from '../demo-components/Div';
 
 import Button from '../library/components/Button';
 import { Paragraph } from '../library/components/Typography';

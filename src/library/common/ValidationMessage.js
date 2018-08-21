@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
 
-import { statusColors } from '../palette';
-import { statusType } from '../types';
-import HeightTransition from '../common/HeightTransition';
+import { statusColors } from "../palette";
+import { statusType } from "../types";
+import HeightTransition from "../common/HeightTransition";
 
 export default class ValidationMessage extends PureComponent {
   static propTypes = {
@@ -13,23 +13,34 @@ export default class ValidationMessage extends PureComponent {
     children: PropTypes.node
   };
 
-  // We keep children in props so that we can use them during exit animation even when they're gone
-  static getDerivedStateFromProps = (nextProps, prevState) => {
-    if (nextProps.children && nextProps.children !== prevState.children) {
-      return { children: nextProps.children };
+  static getDerivedStateFromProps = (props, state) => {
+    let children = state.children;
+    let status = state.status;
+
+    if (props.children && props.children !== children) {
+      children = props.children;
     }
 
-    return null;
+    if (props.status && props.status !== status) {
+      status = props.status;
+    }
+
+    return { children, status };
   };
 
-  state = { children: this.props.children };
+  // We keep children and status in the state so that we
+  // can use them during exit animation even when they're gone
+  state = {
+    status: this.props.status,
+    children: this.props.children
+  };
 
   render() {
-    const { show, children, ...props } = this.props;
+    const { show, ...props } = this.props;
 
     return (
       <HeightTransition isActive={show}>
-        <Message {...props}>{this.state.children}</Message>
+        <Message {...props} {...this.state} />
       </HeightTransition>
     );
   }

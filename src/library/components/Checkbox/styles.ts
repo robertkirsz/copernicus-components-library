@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 
-import { withValidationStatus } from '../../utils';
+import getValidationStatus from '../../utils/getValidationStatus';
 import StaticRipple from '../../common/StaticRipple';
+import { ShortLine, LongLine } from './CheckedIcon';
 
 export const Wrapper = styled.div`
   display: inline-flex;
@@ -14,18 +15,19 @@ export const InputWrapper = styled.div`
   position: relative;
   padding: 8px;
   border-radius: 50%;
-  color: ${props => props.theme.Radio.focus.borderColor};
+  color: ${props => props.theme.Checkbox.focus.borderColor};
 
   /* Hover state */
   &:hover {
     ${StaticRipple} {
-      background: ${props => rgba(withValidationStatus('Radio', 'borderColor')(props), 0.2)};
+      background: ${props => rgba(getValidationStatus('Checkbox', 'borderColor')(props), 0.2)};
       opacity: 1;
     }
   }
 `;
 
-export const Icon = styled.div`
+export const Box = styled<{ validationStatus?: string }, 'div'>('div')`
+  flex: none;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -36,29 +38,15 @@ export const Icon = styled.div`
 
   position: relative;
 
-  border: 2px solid ${withValidationStatus('Radio', 'borderColor')};
-  border-radius: 50%;
+  border: 2px solid ${getValidationStatus('Checkbox', 'borderColor')};
+  border-radius: 2px;
+  pointer-events: none;
 
   transition: background-color 0.3s, border-color 0.3s;
-
-  &::after {
-    content: '';
-
-    display: block;
-    width: 24px;
-    height: 24px;
-
-    position: absolute;
-
-    border-radius: 50%;
-
-    transform: scale(0);
-    transition: 0.3s;
-  }
 `;
 
 // prettier-ignore
-export const Label = styled.label`
+export const Label = styled<{ disabled?: boolean }, 'label'>('label')`
   padding-left: 2px;
 
   position: relative;
@@ -68,8 +56,8 @@ export const Label = styled.label`
   user-select: none;
   cursor: pointer;
 
-  ${props => props.disabled && `
-    color: ${props.theme.Radio.disabled.color};
+  ${props => props.disabled && css`
+    color: ${props.theme.Checkbox.disabled.color};
     cursor: not-allowed;
   `}
 `;
@@ -90,29 +78,35 @@ export const Input = styled.input`
   ${({ theme }) => css`
     /* Focus state */
     &:enabled:focus {
-      + ${Icon} {
-        border-color: ${theme.Radio.focus.borderColor};
+      + ${Box} {
+        border-color: ${theme.Checkbox.focus.borderColor};
       }
 
       ~ ${StaticRipple} {
-        background: ${rgba(theme.Radio.focus.borderColor, 0.2)};
+        background: ${rgba(theme.Checkbox.focus.borderColor, 0.2)};
         opacity: 1;
       }
     }
 
     /* Checked state */
     &:checked {
-      + ${Icon} {
-        border-color: ${theme.Radio.checked.borderColor};
+      + ${Box} {
+        background-color: ${theme.Checkbox.checked.backgroundColor};
+        border-color: ${theme.Checkbox.checked.borderColor};
 
-        &::after {
-          background-color: ${theme.Radio.checked.backgroundColor};
-          transform: scale(1);
+        ${ShortLine} {
+          width: 7px;
+          transition: width 0.05s 0.2s;
+        }
+
+        ${LongLine} {
+          width: 15px;
+          transition: width 0.15s 0.225s;
         }
       }
 
       ~ ${StaticRipple} {
-        background: ${rgba(theme.Radio.checked.borderColor, 0.2)};
+        background: ${rgba(theme.Checkbox.checked.borderColor, 0.2)};
       }
     }
 
@@ -120,9 +114,9 @@ export const Input = styled.input`
     &:disabled {
       cursor: not-allowed;
 
-      + ${Icon} {
-        background-color: ${theme.Radio.disabled.backgroundColor};
-        border-color: ${theme.Radio.disabled.borderColor};
+      + ${Box} {
+        background-color: ${theme.Checkbox.disabled.backgroundColor};
+        border-color: ${theme.Checkbox.disabled.borderColor};
       }
 
       ~ ${StaticRipple} {

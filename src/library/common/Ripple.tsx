@@ -16,11 +16,11 @@ interface WithRippleProps {
   color?: string;
   style?: React.CSSProperties;
   onMouseDown?: () => void;
-  // TODO: this is a custom prop not used by Ripple. Without it being specified here, I get error in Button.tsx at about line 32.
-  // Need to figure out how to handle custom props passing in TypeScript. So this is a temporary workaround.
+  // TODO: this shouldn't be needed, this component only passes the props further down. Need to see how to handle that.
   buttonType?: string;
   loading?: boolean;
   circular?: boolean;
+  validationStatus?: string;
 }
 
 interface Ripple {

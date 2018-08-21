@@ -1,12 +1,4 @@
-import React, { Fragment } from 'react';
 import styled from 'styled-components';
-
-const CheckedIcon = () => (
-  <Fragment>
-    <ShortLine />
-    <LongLine />
-  </Fragment>
-);
 
 export const ShortLine = styled.span`
   display: inline-block;
@@ -37,5 +29,3 @@ export const LongLine = styled.span`
   transform-origin: left center;
   transition: width 0.15s;
 `;
-
-export default CheckedIcon;
