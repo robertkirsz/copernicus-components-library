@@ -1,19 +1,12 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
 import Div from '../demo-components/Div';
 
 import Button from '../library/components/Button';
 import { Paragraph } from '../library/components/Typography';
+import Plus from '../library/icons/Plus';
 
 import ExampleWrapper from './ExampleWrapper';
-
-const Icon = styled.div`
-  width: 16px;
-  height: 16px;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-`;
 
 const ButtonExample: React.SFC = props => (
   <ExampleWrapper label="Button" {...props}>
@@ -60,15 +53,15 @@ const ButtonExample: React.SFC = props => (
         <Paragraph center={true}>Circle primary</Paragraph>
         
         <Button circular={true}>
-          <Icon />
+          <Plus />
         </Button>
         
         <Button circular={true} disabled={true}>
-          <Icon />
+          <Plus />
         </Button>
         
         <Button circular={true} loading={true}>
-          <Icon />
+          <Plus />
         </Button>
       </Div>
 
@@ -76,15 +69,15 @@ const ButtonExample: React.SFC = props => (
         <Paragraph center={true}>Circle tertiary</Paragraph>
         
         <Button circular={true} buttonType="tertiary">
-          <Icon />
+          <Plus />
         </Button>
         
         <Button circular={true} buttonType="tertiary" disabled={true}>
-          <Icon />
+          <Plus />
         </Button>
         
         <Button circular={true} buttonType="tertiary" loading={true}>
-          <Icon />
+          <Plus />
         </Button>
       </Div>
     </Div>

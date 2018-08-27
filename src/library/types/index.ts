@@ -3,5 +3,5 @@ export interface IconProps {
 }
 
 export const defaultIconProps: Partial<IconProps> = {
-  fill: '#201C17'
+  fill: 'currentColor'
 };
