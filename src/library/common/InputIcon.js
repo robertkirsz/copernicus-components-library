@@ -2,11 +2,10 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import { white } from '../palette';
-import { statusType } from '../types';
 
 const propTypes = {
   theme: PropTypes.shape({}),
-  status: statusType,
+  status: PropTypes.string,
   showArrow: PropTypes.bool,
   isArrowActive: PropTypes.bool,
   isDisabled: PropTypes.bool

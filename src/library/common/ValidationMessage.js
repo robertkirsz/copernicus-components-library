@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 import { statusColors } from "../palette";
-import { statusType } from "../types";
 import HeightTransition from "../common/HeightTransition";
 
 export default class ValidationMessage extends PureComponent {
   static propTypes = {
     show: PropTypes.bool,
-    status: statusType,
+    status: PropTypes.string,
     children: PropTypes.node
   };
 

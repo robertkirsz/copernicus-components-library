@@ -1,7 +1,6 @@
 import React, { PureComponent, createRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { statusType } from '../../types';
 import InputWrapper from '../../common/InputWrapper';
 import ValidationMessage from '../../common/ValidationMessage';
 import InputIcon from '../../common/InputIcon';
@@ -24,7 +23,7 @@ export default class Input extends PureComponent {
     label: PropTypes.node,
     hintMessage: PropTypes.node,
     // Validation
-    validationStatus: statusType,
+    validationStatus: PropTypes.string,
     validationMessage: PropTypes.node,
     // Event handlers
     onChange: PropTypes.func,

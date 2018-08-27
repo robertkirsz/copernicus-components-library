@@ -7,6 +7,7 @@ import ThemeProvider from './library/components/ThemeProvider';
 import ButtonExample from './examples/ButtonExample';
 import CheckboxExample from './examples/CheckboxExample';
 import FormExample from './examples/FormExample';
+import IconsExample from './examples/IconsExample';
 import InputExample from './examples/InputExample';
 import RadioExample from './examples/RadioExample';
 import TypographyExample from './examples/TypographyExample';
@@ -56,6 +57,8 @@ class App extends React.Component<{}, AppState> {
           
           <RadioExample flex={1} />
         </Div>
+
+        <IconsExample />
         
         <InputExample />
         

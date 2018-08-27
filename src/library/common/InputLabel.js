@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { white, statusColors } from '../palette';
-import { statusType } from '../types';
+import { statusColors } from '../palette';
 
 // prettier-ignore
 const InputLabel = styled.label`
@@ -18,7 +17,7 @@ const InputLabel = styled.label`
     font-size: ${theme.InputLabel.fontSize}px;
     line-height: ${theme.InputLabel.lineHeight}px;
     font-weight: ${theme.InputLabel.fontWeight};
-    color: ${isDisabled ? theme.Input.disabled.color : status ? white : theme.InputLabel.color};
+    color: ${isDisabled ? theme.Input.disabled.color : status ? statusColors[validationStatus] : theme.InputLabel.color};
     white-space: nowrap;
     text-overflow: ellipsis;
     pointer-events: none;
@@ -53,7 +52,7 @@ InputLabel.propTypes = {
   isActive: PropTypes.bool,
   isDisabled: PropTypes.bool,
   offsetLeft: PropTypes.number,
-  status: statusType,
+  status: PropTypes.string,
   theme: PropTypes.shape({})
 };
 

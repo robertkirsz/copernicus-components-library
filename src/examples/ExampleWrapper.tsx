@@ -7,6 +7,7 @@ import { SmallHeader } from '../library/components/Typography';
 
 interface ExampleWrapperProps {
   label?: string;
+  style?: object;
 };
 
 const ExampleWrapper: React.SFC<ExampleWrapperProps> = ({ label, children, ...props }) => (
@@ -17,6 +18,7 @@ const ExampleWrapper: React.SFC<ExampleWrapperProps> = ({ label, children, ...pr
 );
 
 const StyledExampleWrapper = styled(ExampleWrapper)`
+  position: relative;
   margin: 8px;
   padding: 8px;
   border: 1px solid #999;
